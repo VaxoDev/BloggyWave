@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - BloggyWave</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css">
+    <link rel="shortcut icon" type="x-icon" href="images/logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* User Profile Specific Styles */
+        .profile-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .profile-posts h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Favorites Section -->
+    <div id="favoritesSection" class="favorites-section">
+        <div class="favorites-header">
+            <h2>Favorites</h2>
+            <button id="closeFavorites">&times;</button>
+        </div>
+        <div id="favoritesList"></div>
+    </div>
+
+    <header class="main-header">
+        <div class="nav container">
+            <a href="bloggywave.html" class="logo">Bloggy<span>Wave</span></a>
+            <button id="menuToggle" class="menu-toggle">
+                <i class='bx bx-menu'></i>
+            </button>
+
+            <div class="nav-right" id="navMenu">
+                <div class="auth-buttons">
+                    <button id="loginBtn" class="auth-btn">Login</button>
+                    <button id="logoutBtn" class="auth-btn" style="display: none;">Logout</button>
+                </div>
+
+
+
+                <a href="admin.html" class="admin-btn" style="display: none;">
+                    <i class='bx bxs-user'></i>
+                    <span class="mobile-only">Admin Panel</span>
+                    <span class="desktop-only"></span>
+                </a>
+
+                <a href="add.html" class="write-btn" style="display: none;">
+                    <i class="bx bxs-pencil"></i>
+                    <span class="mobile-only">Add a Post</span>
+                    <span class="desktop-only"></span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="profile-container" role="main">
+        <div id="user-profile">
+            <!-- User profile content will be dynamically inserted here -->
+        </div>
+    </main>
+    <!-- Favorites Section -->
+    <div id="favoritesSection" class="favorites-section">
+        <div class="favorites-header">
+            <h2>Favorites</h2>
+            <button id="closeFavorites">&times;</button>
+        </div>
+        <div id="favoritesList"></div>
+    </div>
+
+    <!-- Logout Popup -->
+    <div id="logoutPopup" class="popup">
+        <div class="popup-content">
+            <h3>Confirm Logout</h3>
+            <p>Are you sure you want to logout?</p>
+            <button id="confirmLogout">Yes, Logout</button>
+            <button id="cancelLogout">Cancel</button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 BloggyWave. All rights reserved.</p>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <!-- Your main script -->
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Post - BloggyWave</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link rel="shortcut icon" type="x-icon" href="images/logo.jpg">
+
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="nav container">
+            <a href="bloggywave.html" class="logo">Bloggy<span>Wave</span></a>
+            <button id="menuToggle" class="menu-toggle">
+                <i class='bx bx-menu'></i>
+            </button>
+
+            <div class="nav-right" id="navMenu">
+                <div class="auth-buttons">
+                    <button id="loginBtn" class="auth-btn">Login</button>
+                    <button id="logoutBtn" class="auth-btn" style="display: none;">Logout</button>
+                </div>
+
+
+                <a href="admin.html" class="admin-btn" style="display: none;">
+                    <i class='bx bxs-user'></i>
+                    <span class="mobile-only">Admin Panel</span>
+                    <span class="desktop-only"></span>
+                </a>
+
+                <a href="add.html" class="write-btn" style="display: none;">
+                    <i class="bx bxs-pencil"></i>
+                    <span class="mobile-only">Add a Post</span>
+                    <span class="desktop-only"></span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="add-post">
+        <h6>Add New Post</h6>
+        <form id="add-post-form">
+            <input type="text" id="title" placeholder="Title" required>
+            <select id="category" required>
+                <option value="">Select Category</option>
+                <option value="Art">Art</option>
+                <option value="Technology">Technology</option>
+                <option value="Sport">Sport</option>
+                <option value="Food">Food</option>
+                <option value="Other">Other</option>
+            </select>
+            <div id="editor-container" style="height: 250px;"></div>
+            <input type="file" id="media" accept="image/*,video/*">
+            <div id="image-preview"></div>
+            <button type="submit">Add Post</button>
+        </form>
+        <a href="bloggywave.html">Back To Home</a>
+    </div>
+
+    <div id="logoutPopup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h3>Confirm Logout</h3>
+            <p>Are you sure you want to logout?</p>
+            <button id="confirmLogout">Yes, Logout</button>
+            <button id="cancelLogout">Cancel</button>
+        </div>
+    </div>
+    <!-- Favorites Section -->
+    <div id="favoritesSection" class="favorites-section">
+        <div class="favorites-header">
+            <h2>Favorites</h2>
+            <button id="closeFavorites">&times;</button>
+        </div>
+        <div id="favoritesList"></div>
+    </div>
+
+    <div class="footer container">
+        © VakhoDev
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <script src="scrollup.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

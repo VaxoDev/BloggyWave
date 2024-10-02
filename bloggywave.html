@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloggyWave</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="x-icon" href="images/logo.jpg">
+
+    <style>
+        .post-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header -->
+    <header class="main-header">
+        <div class="nav container">
+            <a href="bloggywave.html" class="logo">Bloggy<span>Wave</span></a>
+            <button id="menuToggle" class="menu-toggle">
+                <i class='bx bx-menu'></i>
+            </button>
+
+            <div class="nav-right" id="navMenu">
+                <div class="auth-buttons">
+                    <button id="loginBtn" class="auth-btn">Login</button>
+                    <button id="logoutBtn" class="auth-btn" style="display: none;">Logout</button>
+                </div>
+
+                <button id="favoritesBtn" class="favorites-btn">
+                    <i class='bx bxs-heart'></i>
+                    <span class="mobile-only">Liked Posts</span>
+                    <span class="desktop-only"></span>
+                </button>
+
+                <a href="admin.html" class="admin-btn" style="display: none;">
+                    <i class='bx bxs-user'></i>
+                    <span class="mobile-only">Admin Panel</span>
+                    <span class="desktop-only"></span>
+                </a>
+                
+                <a href="add.html" class="write-btn" style="display: none;">
+                    <i class="bx bxs-pencil"></i>
+                    <span class="mobile-only">Add a Post</span>
+                    <span class="desktop-only"></span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- Home -->
+    <section class="home section" id="home">
+        <div class="home-content container">
+            <h2>The BloggyWave Blog</h2>
+            <div class="search-box">
+                <i class='bx bx-search'></i>
+                <input type="text" id="searchInput" placeholder="Search posts and users...">
+            </div>
+        </div>
+    </section>
+
+    <!-- Post Filter -->
+    <div class="post-filter container">
+        <span class="filter-item active-filter" data-filter="all">All</span>
+        <span class="filter-item" data-filter="Art">Art</span>
+        <span class="filter-item" data-filter="Technology">Technology</span>
+        <span class="filter-item" data-filter="Sport">Sport</span>
+        <span class="filter-item" data-filter="Food">Food</span>
+    </div>
+
+    <!-- Posts -->
+    <section class="posts section container" id="posts">
+        <!-- Post content will be dynamically added here -->
+    </section>
+
+    <!-- Favorites Section -->
+    <div id="favoritesSection" class="favorites-section">
+        <div class="favorites-header">
+            <h2>Favorites</h2>
+            <button id="closeFavorites">&times;</button>
+        </div>
+        <div id="favoritesList"></div>
+    </div>
+
+    <!-- Logout Popup -->
+    <div id="logoutPopup" class="popup">
+        <div class="popup-content">
+            <h3>Confirm Logout</h3>
+            <p>Are you sure you want to logout?</p>
+            <button id="confirmLogout">Yes, Logout</button>
+            <button id="cancelLogout">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer container">
+        <p>&#169; VakhoDev</p>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <script src="scrollup.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

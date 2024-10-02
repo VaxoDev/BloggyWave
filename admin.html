@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - BloggyWave</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link rel="shortcut icon" type="x-icon" href="images/logo.jpg">
+
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="nav container">
+            <a href="bloggywave.html" class="logo">Bloggy<span>Wave</span></a>
+            <button id="menuToggle" class="menu-toggle">
+                <i class='bx bx-menu'></i>
+            </button>
+
+            <div class="nav-right" id="navMenu">
+                <div class="auth-buttons">
+                    <button id="loginBtn" class="auth-btn">Login</button>
+                    <button id="logoutBtn" class="auth-btn" style="display: none;">Logout</button>
+                </div>
+
+
+
+                <a href="admin.html" class="admin-btn" style="display: none;">
+                    <i class='bx bxs-user'></i>
+                    <span class="mobile-only">Admin Panel</span>
+                    <span class="desktop-only"></span>
+                </a>
+
+                <a href="add.html" class="write-btn" style="display: none;">
+                    <i class="bx bxs-pencil"></i>
+                    <span class="mobile-only">Add a Post</span>
+                    <span class="desktop-only"></span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- Favorites Section -->
+    <div id="favoritesSection" class="favorites-section">
+        <div class="favorites-header">
+            <h2>Favorites</h2>
+            <button id="closeFavorites">&times;</button>
+        </div>
+        <div id="favoritesList"></div>
+    </div>
+
+    <main class="admin-panel">
+        <h1>Admin Panel</h1>
+
+        <div id="account-info" class="section account-info">
+            <h2>Account Information</h2>
+            <div class="user-image-container">
+                <img id="userImage" src="/api/placeholder/150/150" alt="User Image" class="user-image">
+                <button id="changeImageBtn">Change Image</button>
+                <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+            </div>
+            <div class="user-details">
+                <p>Username: <span id="username"></span> <button id="changeUsernameBtn">Change</button></p>
+                <p>Email: <span id="email">Click to reveal</span></p>
+            </div>
+        </div>
+
+        <h1>Your Posts</h1>
+        <table id="post-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Post rows will be dynamically added here -->
+            </tbody>
+        </table>
+
+        <a href="bloggywave.html" class="admin-back-link">Back To Home</a>
+    </main>
+
+    <div id="logoutPopup" class="popup">
+        <div class="popup-content">
+            <h3>Confirm Logout</h3>
+            <p>Are you sure you want to logout?</p>
+            <button id="confirmLogout">Yes, Logout</button>
+            <button id="cancelLogout">Cancel</button>
+        </div>
+    </div>
+
+    <div id="changeUsernamePopup" class="popup">
+        <div class="popup-content">
+            <h3>Change Username</h3>
+            <input type="text" id="newUsername" placeholder="Enter new username">
+            <p id="usernameAvailability"></p>
+            <button id="confirmUsernameChange" disabled>Change Username</button>
+            <button id="cancelUsernameChange">Cancel</button>
+        </div>
+    </div>
+
+    <footer class="footer container">
+        <p>© VakhoDev</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <script src="script.js"></script>
+    <script src="scrollup.js"></script>
+</body>
+
+</html>

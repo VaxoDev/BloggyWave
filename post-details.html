@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Details - BloggyWave</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link rel="shortcut icon" type="x-icon" href="images/logo.jpg">
+
+</head>
+
+<body>
+    <!-- Favorites Section -->
+    <div id="favoritesSection" class="favorites-section">
+        <div class="favorites-header">
+            <h2>Favorites</h2>
+            <button id="closeFavorites">&times;</button>
+        </div>
+        <div id="favoritesList"></div>
+    </div>
+
+    <header class="main-header">
+        <div class="nav container">
+            <a href="bloggywave.html" class="logo">Bloggy<span>Wave</span></a>
+            <button id="menuToggle" class="menu-toggle">
+                <i class='bx bx-menu'></i>
+            </button>
+
+            <div class="nav-right" id="navMenu">
+                <div class="auth-buttons">
+                    <button id="loginBtn" class="auth-btn">Login</button>
+                    <button id="logoutBtn" class="auth-btn" style="display: none;">Logout</button>
+                </div>
+
+
+
+                <a href="admin.html" class="admin-btn" style="display: none;">
+                    <i class='bx bxs-user'></i>
+                    <span class="mobile-only">Admin Panel</span>
+                    <span class="desktop-only"></span>
+                </a>
+
+                <a href="add.html" class="write-btn" style="display: none;">
+                    <i class="bx bxs-pencil"></i>
+                    <span class="mobile-only">Add a Post</span>
+                    <span class="desktop-only"></span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="post-header">
+        <div class="header-content post-container">
+            <h3 id="post-category"></h3>
+            <h1 id="post-title" class="header-title"></h1>
+            <img id="post-image" style="display:none;" alt="Post Image">
+            <video id="post-video" controls style="display:none;"></video>
+            <button id="editPostBtn" style="display: none; ">Edit Post</button>
+        </div>
+    </section>
+
+    <section id="post-content" class="post-content post-container">
+        <!-- Post content will be loaded here -->
+    </section>
+
+    <div class="share post-container">
+        <h2 class="share-title">Share this article</h2>
+        <div class="social">
+            <a href="#" onclick="sharePost('link')"><i class='bx bx-link'></i></a>
+            <a href="#" onclick="sharePost('facebook')"><i class='bx bxl-facebook'></i></a>
+            <a href="#" onclick="sharePost('twitter')"><i class='bx bxl-twitter'></i></a>
+            <a href="#" onclick="sharePost('linkedin')"><i class='bx bxl-linkedin'></i></a>
+        </div>
+    </div>
+    <div id="comments-section" class="comments-section post-container">
+        <h3>Comments</h3>
+        <div id="comments-list"></div>
+        <form id="comment-form">
+            <textarea id="comment-input" placeholder="Write your comment here..." required></textarea>
+            <button type="submit">Post Comment</button>
+        </form>
+    </div>
+
+    <template id="comment-template">
+        <div class="comment">
+            <div class="comment-likes">
+                <button class="like-button">
+                    <i class="bx bx-heart"></i>
+                </button>
+                <span class="like-count">0</span>
+            </div>
+            <img class="comment-author-image" src="" alt="User Avatar">
+            <div class="comment-content">
+                <h4 class="comment-author-name"></h4>
+                <p class="comment-text"></p>
+                <span class="comment-date"></span>
+                <button class="remove-comment-btn" style="display: none;">Remove</button>
+            </div>
+        </div>
+    </template>
+    <div id="share-popup" class="share-popup" style="display: none;">
+        <div class="popup-content">
+            <h3>Share this post</h3>
+            <input type="text" id="share-link" readonly>
+            <button id="copy-link">Copy Link</button>
+            <button id="close-popup">Close</button>
+        </div>
+    </div>
+
+    <div id="editPostPopup" class="popup">
+        <div class="popup-content">
+            <h2>Edit Post</h2>
+            <form id="edit-post-form">
+                <input type="text" id="edit-title" placeholder="Title" required>
+                <select id="edit-category" required>
+                    <option value="Other">Other</option>
+                    <option value="Art">Art</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Food">Food</option>
+                </select>
+                <div id="edit-content-container"></div>
+                <input type="file" id="edit-image" accept="image/*,video/*">
+                <button type="submit" class="button">Update Post</button>
+                <button type="button" id="cancelEdit" class="button">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="logoutPopup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h3>Confirm Logout</h3>
+            <p>Are you sure you want to logout?</p>
+            <button id="confirmLogout">Yes, Logout</button>
+            <button id="cancelLogout">Cancel</button>
+        </div>
+    </div>
+
+    <div class="footer container">
+        © VakhoDev
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <script src="scrollup.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
